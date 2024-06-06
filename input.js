@@ -5,18 +5,18 @@ fs.readFile("input.txt", (err, data) => {
 
   let data1 = data.toString();
   const lines = data1.split(/\r?\n/).map(Number);
-  const windowSize = 3;
+  const window = 3;
 
   let count = 0;
   let previousSum = 0;
   let currentSum = 0;
 
-  for (let i = 0; i < windowSize; i++) {
+  for (let i = 0; i < window; i++) {
     previousSum += lines[i];
   }
 
-  for (let i = windowSize; i < lines.length; i++) {
-    currentSum = previousSum + lines[i] - lines[i - windowSize]
+  for (let i = window; i < lines.length; i++) {
+    currentSum = previousSum + lines[i] - lines[i - window]
     if (currentSum > previousSum) {
       count++;
     }
